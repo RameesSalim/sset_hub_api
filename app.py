@@ -1,4 +1,5 @@
 from flask import Flask,request,render_template,redirect,url_for
+from flask import session
 import requests
 import mechanize 
 from bs4 import BeautifulSoup 
@@ -9,6 +10,15 @@ import json
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
+app.secret_key ='a?Aە*?:?S??N'
+
+
+@app.route('/')
+def index():
+    if 'username' in session:
+        return render_template('index.html')
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -18,6 +28,7 @@ def login():
             url = "https://sset.ecoleaide.com"
             username = request.form['username']
             password = request.form['password']
+            session['username'] = username
             new_url = requests.get(url)
             print(new_url.url)
             #Filtering Session ID from the base URL
@@ -25,6 +36,7 @@ def login():
             session = session_filter.split(';')
             session = ";" + session[1]
             print(session)
+            session['sess'] = session
             #Inputs to submit form
             username = "SSET_" + username 
             # Ecoliade Login Action 
@@ -38,9 +50,11 @@ def login():
             br["password"] =password  
             logged_in = br.submit()  
             logincheck = logged_in.read()  
-            # confirm = logincheck.body.include('Change Password') 
-            
-            error = logincheck
+            # word = "Change Password"
+            if b'Change Password' in logincheck:
+                session['username'] = request.form['username']
+                # session['password'] = password
+                return render_template('index.html')
         
             # print(logincheck)
             # return redirect(url_for('home'))

@@ -1,5 +1,7 @@
 from flask import Flask,request,render_template,redirect,url_for
 from flask import session
+import datetime
+import os
 import requests
 import mechanize 
 from bs4 import BeautifulSoup 
@@ -10,13 +12,14 @@ import json
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-app.secret_key ='a?Aە*?:?S??N'
+app.secret_key =os.urandom(24)
 
 
 @app.route('/')
 def index():
-    if 'username' in session:
-        return render_template('index.html')
+    if session.get('username'):
+        # return render_template('index.html')
+        return redirect(url_for('attendance'))
     else:
         return redirect(url_for('login'))
 
@@ -28,15 +31,15 @@ def login():
             url = "https://sset.ecoleaide.com"
             username = request.form['username']
             password = request.form['password']
-            session['username'] = username
+            # session['username'] = username
             new_url = requests.get(url)
             print(new_url.url)
             #Filtering Session ID from the base URL
             session_filter = str(new_url.url)
-            session = session_filter.split(';')
-            session = ";" + session[1]
-            print(session)
-            session['sess'] = session
+            session_obj = session_filter.split(';')
+            session_obj = ";" + session_obj[1]
+            print(session_obj)
+            # session['sess'] = session
             #Inputs to submit form
             username = "SSET_" + username 
             # Ecoliade Login Action 
@@ -52,20 +55,41 @@ def login():
             logincheck = logged_in.read()  
             # word = "Change Password"
             if b'Change Password' in logincheck:
-                session['username'] = request.form['username']
+                session['username'] = username
+                session['value'] = session_obj
                 # session['password'] = password
-                return render_template('index.html')
+                return redirect(url_for('index'))
         
             # print(logincheck)
             # return redirect(url_for('home'))
         else:
+            session['username'] = False
             error = "Invalid Credentials"
+
     return render_template('login.html', error=error)
 
-@app.route('/home')
-def home():
-    return 'Home'
 
+@app.route('/attendance', methods=['GET', 'POST'])
+def attendance():
+    if not session.get('username'):
+        # return render_template('index.html')
+        return redirect(url_for('login'))
+    error = None
+    if request.method == 'POST':
+        if request.form['date']:
+            date = request.form['date']
+            print(date)
+            new_date = datetime.datetime.strptime(date,"%Y-%m-%d").strftime("%d/%m/%Y")
+            print(new_date)
+            br = mechanize.Browser()
+            br.set_handle_robots(False)
+            br.addheaders = [("User-agent","Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.13) Gecko/20101206 Ubuntu/10.10 (maverick) Firefox/3.6.13")]
+            opening_url = "https://sset.ecoleaide.com/search/subjAttendReport.htm" + session['value']
+            print(opening_url)
+            new_url = br.open(opening_url)
+            print(new_url)
+            
+    return render_template('date.html', error=error)
 
 if __name__ == '__main__':
    app.run(debug = True)

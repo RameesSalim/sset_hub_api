@@ -23,7 +23,7 @@ def Attendance(username,password):
 	session = ";" + session[1]
 	# username = "SEE/7448/16"
 	# password = "7448"
-	username = "SSET_" + username 
+	usernamee = "SSET_" + username
 	# Ecoliade Login Action 
 	br = mechanize.Browser()
 	br.set_handle_robots(False)
@@ -35,14 +35,16 @@ def Attendance(username,password):
 		sign_in = br.open(new_url.url)  #the login url
 		br.select_form(nr = 0) 
 		br.set_all_readonly(False)
-		br["username"] =username 
+		br["username"] =usernamee
 		br["password"] =password  
 		logged_in = br.submit()  
 		logincheck = logged_in.read() 
-
-		
+		soup = BeautifulSoup(logincheck, 'html5lib') 
 	except Exception as e:
 		print(e)
+	val = soup.find(text=username)
+	print(username)
+	print(val)
 	#Scrapping Needed Data
 	new_url = br.geturl()
 	new_url = br.open("https://sset.ecoleaide.com/search/subjAttendReport.htm")
@@ -57,9 +59,7 @@ def Attendance(username,password):
 	else:
 		a="1/1/"
 		date = a+str(x.year)
-
-	#Adding Starting Date 
-	if(br["fromDate"]):
+	try:
 		br["fromDate"] =date
 		read = br.submit()  
 		details = read.read()
@@ -67,7 +67,6 @@ def Attendance(username,password):
 		data=[]
 		table = soup.find('table', attrs = {'class':'subj-attendance-table'})
 		table_body = table.find('tbody')
-
 		rows = table_body.find_all('tr')
 		datas = np.array([], dtype=float, ndmin=2)
 		i = 0
@@ -78,12 +77,7 @@ def Attendance(username,password):
 			data[i] = cols
 			i= i+1
 		return data
-	else:
-		return "Incorrect Username or password"
-	# print(details)
-# except Exception as e:
-# 		print(e)
-	
-	# print(soup.prettify()) 
-	#Getting Attributes
-Attendance("SEE/6993/16","69936993")
+	except Exception as e:
+		return False
+		print(e)
+print(Attendance("SEE/6993/16","699369932"))

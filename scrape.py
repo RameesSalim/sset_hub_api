@@ -59,7 +59,7 @@ def Attendance(username,password):
 		date = a+str(x.year)
 
 	#Adding Starting Date 
-	if(br["fromDate"]):
+	try:
 		br["fromDate"] =date
 		read = br.submit()  
 		details = read.read()
@@ -78,12 +78,8 @@ def Attendance(username,password):
 			data[i] = cols
 			i= i+1
 		return data
-	else:
+	except Exception as e:
 		return "Incorrect Username or password"
-	# print(details)
-# except Exception as e:
-# 		print(e)
-	
-	# print(soup.prettify()) 
-	#Getting Attributes
-Attendance("SEE/6993/16","69936993")
+		print(e)
+
+# print(Attendance("SEE/6993/16","69936993"))

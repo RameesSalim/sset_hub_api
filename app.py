@@ -3,7 +3,7 @@ from flask import session
 import datetime
 import os
 import requests
-import jsonify
+import jsonify,json
 from scrape import Attendance
 
 
@@ -28,6 +28,6 @@ def attendance():
             password = data['password']
     data = Attendance(username,password)
     print(data)
-    return make_response(dumps(data))
+    return json.dumps(data)
 if __name__ == '__main__':
    app.run(debug = True)

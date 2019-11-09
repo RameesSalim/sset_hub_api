@@ -27,6 +27,7 @@ def attendance():
         if 'password' in data:
             password = data['password']
     data = Attendance(username,password)
-    return jsonify(data)
+    print(data)
+    return make_response(dumps(data))
 if __name__ == '__main__':
    app.run(debug = True)

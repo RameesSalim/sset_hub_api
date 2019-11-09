@@ -27,17 +27,20 @@ def Attendance(username,password):
 	# Ecoliade Login Action 
 	br = mechanize.Browser()
 	br.set_handle_robots(False)
+	br.set_handle_refresh(False)
 	br.addheaders = [("User-agent","Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.13) Gecko/20101206 Ubuntu/10.10 (maverick) Firefox/3.6.13")]
+	cj = mechanize.CookieJar()
+	br.set_cookiejar(cj)
 	try:
-		cj = mechanize.CookieJar()
-		br.set_cookiejar(cj)
 		sign_in = br.open(new_url.url)  #the login url
 		br.select_form(nr = 0) 
 		br.set_all_readonly(False)
 		br["username"] =username 
 		br["password"] =password  
 		logged_in = br.submit()  
-		logincheck = logged_in.read()  
+		logincheck = logged_in.read() 
+
+		
 	except Exception as e:
 		print(e)
 	#Scrapping Needed Data
@@ -45,6 +48,8 @@ def Attendance(username,password):
 	new_url = br.open("https://sset.ecoleaide.com/search/subjAttendReport.htm")
 	br.select_form(nr = 0) 
 	br.set_all_readonly(False)
+
+	# Date setting
 	x = datetime.datetime.now()
 	if(x.month >=8):
 		a = "1/8/"
@@ -52,30 +57,33 @@ def Attendance(username,password):
 	else:
 		a="1/1/"
 		date = a+str(x.year)
-	try:
+
+	#Adding Starting Date 
+	if(br["fromDate"]):
 		br["fromDate"] =date
 		read = br.submit()  
 		details = read.read()
-		# print(details)
-	except Exception as e:
-		print(e)
-	soup = BeautifulSoup(details, 'html5lib') 
+		soup = BeautifulSoup(details, 'html5lib') 
+		data=[]
+		table = soup.find('table', attrs = {'class':'subj-attendance-table'})
+		table_body = table.find('tbody')
+
+		rows = table_body.find_all('tr')
+		datas = np.array([], dtype=float, ndmin=2)
+		i = 0
+		for row in rows:
+			cols = row.find_all('td')
+			cols = [ele.text.strip() for ele in cols]
+			data.append([ele for ele in cols if ele])
+			data[i] = cols
+			i= i+1
+		return data
+	else:
+		return "Incorrect Username or password"
+	# print(details)
+# except Exception as e:
+# 		print(e)
+	
 	# print(soup.prettify()) 
 	#Getting Attributes
-	data=[]
-	table = soup.find('table', attrs = {'class':'subj-attendance-table'})
-	table_body = table.find('tbody')
-
-	rows = table_body.find_all('tr')
-	datas = np.array([], dtype=float, ndmin=2)
-	i = 0
-	for row in rows:
-		cols = row.find_all('td')
-		cols = [ele.text.strip() for ele in cols]
-		data.append([ele for ele in cols if ele])
-		data[i] = cols
-		i= i+1
-	
-	print(data)
-	return data
-
+Attendance("SEE/6993/16","69936993")

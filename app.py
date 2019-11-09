@@ -16,5 +16,17 @@ def index():
     # return jsonify(Attendance())
     print("helo")
 
+@app.route('/v1/profile/attendance', methods=['POST'])
+def attendance():
+    username=None
+    password=None
+    if request.is_json:
+        data = request.get_json(force=True)
+        if 'username' in data:
+            username = data['username']
+        if 'password' in data:
+            password = data['password']
+    data = Attendance(username,password)
+    return jsonify(data)
 if __name__ == '__main__':
    app.run(debug = True)

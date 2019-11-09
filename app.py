@@ -15,6 +15,7 @@ app.secret_key =os.urandom(24)
 def index():
     # return jsonify(Attendance())
     print("helo")
+    return "Hello World"
 
 @app.route('/v1/profile/attendance', methods=['POST'])
 def attendance():

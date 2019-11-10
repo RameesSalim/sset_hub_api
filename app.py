@@ -17,8 +17,10 @@ def index():
     print("helo")
     return "Hello World"
 
-@app.route('/v1/profile/attendance', methods=['POST'])
+@app.route('/v1/profile/attendance', methods=['GET','POST'])
 def attendance():
+    if (request.method == 'GET'):
+        return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
     username=None
     password=None
     if request.is_json:

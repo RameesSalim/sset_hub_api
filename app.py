@@ -33,5 +33,6 @@ def attendance():
         data = Attendance(username,password)
         # print(data)
         return json.dumps(data)
+
 if __name__ == '__main__':
    app.run(debug = True)

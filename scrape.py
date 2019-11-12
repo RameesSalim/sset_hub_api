@@ -6,6 +6,7 @@ import numpy as np
 import json
 import http.cookiejar
 import datetime
+import os
 
 
 
@@ -29,8 +30,12 @@ def Attendance(username,password):
 	br.set_handle_robots(False)
 	br.set_handle_refresh(False)
 	br.addheaders = [("User-agent","Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.13) Gecko/20101206 Ubuntu/10.10 (maverick) Firefox/3.6.13")]
-	cj = mechanize.CookieJar()
-	br.set_cookiejar(cj)
+	#COokie Setting
+
+	cookiejar =mechanize.LWPCookieJar()
+	br.set_cookiejar(cookiejar)
+	# cj = mechanize.CookieJar()
+	# br.set_cookiejar(cj)
 	try:
 		sign_in = br.open(new_url.url)  #the login url
 		br.select_form(nr = 0) 
@@ -40,6 +45,10 @@ def Attendance(username,password):
 		logged_in = br.submit()  
 		logincheck = logged_in.read() 
 		soup = BeautifulSoup(logincheck, 'html5lib') 
+		os.remove('login.html')
+		f=open('login.html','w+')
+		f.write(soup.prettify())
+		f.close()
 	except Exception as e:
 		print(e)
 	val = soup.find(text=username)
@@ -47,7 +56,12 @@ def Attendance(username,password):
 	print(val)
 	#Scrapping Needed Data
 	new_url = br.geturl()
-	new_url = br.open("https://sset.ecoleaide.com/search/subjAttendReport.htm")
+	new_url = br.open("https://sset.ecoleaide.com/search/subjAttendReport.htm" + session)
+	soup = BeautifulSoup(new_url,'html5lib')
+	os.remove('attendance.html')
+	f = open('attendance.html','w+')
+	f.write(soup.prettify())
+	f.close()
 	br.select_form(nr = 0) 
 	br.set_all_readonly(False)
 
@@ -78,6 +92,6 @@ def Attendance(username,password):
 			i= i+1
 		return data
 	except Exception as e:
-		return False
+		return "Failed"
 		print(e)
-print(Attendance("SEE/6993/16","699369932"))
+

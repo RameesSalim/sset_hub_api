@@ -1,0 +1,1470 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link href="./images/favicon.ico" rel="icon" type="image/x-icon"/>
+  <link href="./images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+  <title>
+   SSET - Student/Parent Portal
+  </title>
+  <!-- Bootstrap core CSS -->
+  <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <link href="/css/bootstrap/font-awesome.min.css" rel="stylesheet"/>
+  <link href="/css/page.css" rel="stylesheet"/>
+  <link href="/css/calendar.css" rel="stylesheet"/>
+  <link href="/css/bootstrap/datepicker.css" rel="stylesheet"/>
+  <!-- Custom styles for this template -->
+  <script src="/js/jquery-1.11.3.min.js" type="text/javascript">
+  </script>
+  <script src="/js/jquery-ui.js" type="text/javascript">
+  </script>
+  <script src="/js/action.js" type="text/javascript">
+  </script>
+  <script src="/js/jquery.form.js" type="text/javascript">
+  </script>
+  <script src="/js/common.js" type="text/javascript">
+  </script>
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <link href="/click/control.css" rel="stylesheet" type="text/css"/>
+  <link href="/click/table.css" rel="stylesheet" type="text/css"/>
+  <style id="libraryTable_css_setup" type="text/css">
+   th.sortable a {
+background: url(/click/column-sortable-light.gif) center right no-repeat;}
+th.ascending a {
+background: url(/click/column-ascending-light.gif) center right no-repeat;}
+th.descending a {
+background: url(/click/column-descending-light.gif) center right no-repeat;}
+  </style>
+  <style id="newArrivalTable_css_setup" type="text/css">
+   th.sortable a {
+background: url(/click/column-sortable-light.gif) center right no-repeat;}
+th.ascending a {
+background: url(/click/column-ascending-light.gif) center right no-repeat;}
+th.descending a {
+background: url(/click/column-descending-light.gif) center right no-repeat;}
+  </style>
+  <style id="newLibraryTable_css_setup" type="text/css">
+   th.sortable a {
+background: url(/click/column-sortable-light.gif) center right no-repeat;}
+th.ascending a {
+background: url(/click/column-ascending-light.gif) center right no-repeat;}
+th.descending a {
+background: url(/click/column-descending-light.gif) center right no-repeat;}
+  </style>
+  <style id="reservedItemAvailTable_css_setup" type="text/css">
+   th.sortable a {
+background: url(/click/column-sortable-light.gif) center right no-repeat;}
+th.ascending a {
+background: url(/click/column-ascending-light.gif) center right no-repeat;}
+th.descending a {
+background: url(/click/column-descending-light.gif) center right no-repeat;}
+  </style>
+  <script>
+   function getDefaultCalendarFormat(){ return 'dd/mm/yy';}function getMessage(messageIndex){ messages={ 'js_class_name':'Class','js_course_name':'Course','js_course_namelabel':'Course','js_batch_namelabel':'Batch','js_batch_select_option':'---Select Batch---','js_student_minimum_search':'Enter minimum one Search Criteria','js_librarybook_comments_toc':'Comments And Table Of Contents','js_attendance_delete_search':'Do you want to delete search criteria?','js_class_batch':'Class/Batch :','js_student_delete_search':'Do you want to delete search criteria?','js_class_select_option':'---Select Class---','js_librarybook_holdings':'Holdings' }; return messages[messageIndex]; }function initAjaxPage(obj){}function processAjaxResponse(response){}function getPortalUrl(){ return 'http://sset.ecoleaide.com:8080';}
+  </script>
+ </head>
+ <body style="background-color:#eee;">
+  <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#fff;">
+   <div class="container">
+    <p class="navbar-brand">
+     <img class="img-responsive w-xs-logo h-xs" id="instLogoheader" name="instLogoheader" src="/dashboard.htm?pageAction=renderImage&amp;photoUniqueId=null&amp;random=0.15991951600427723"/>
+    </p>
+    <h4 class="logo-text">
+     SCMS School of Engineering &amp; Technology
+    </h4>
+    <div class="navbar-custom-menu">
+     <ul class="nav navbar-nav pull-right navbar-icons">
+      <li class="dropdown messages-menu nav-item col-md-6 col-xs-12 student-select" style="padding-top: 15px;min-width: 160px;">
+      </li>
+      <li class="dropdown messages-menu nav-item col-md-2">
+       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-envelope">
+        </i>
+        <span class="label label-count mail">
+         0
+        </span>
+       </a>
+       <ul class="dropdown-menu">
+        <li class="header bold">
+         You have 0 Alert
+        </li>
+        <li>
+         <!-- inner menu: contains the actual data -->
+         <div class="">
+         </div>
+        </li>
+        <li class="">
+        </li>
+        <li class="footer">
+        </li>
+       </ul>
+      </li>
+      <li class="dropdown notifications-menu nav-item col-md-2">
+       <a aria-expanded="false" class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="fa fa-bell">
+        </i>
+        <span class="label label-count notif">
+         0
+        </span>
+       </a>
+       <ul class="dropdown-menu">
+        <li class="header bold">
+         You have 0 Reminders
+        </li>
+        <li>
+         <!-- inner menu: contains the actual data -->
+         <div class="">
+          <div class="slimScrollBar" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 3px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 200px;">
+          </div>
+          <div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;">
+          </div>
+         </div>
+        </li>
+       </ul>
+      </li>
+      <li class="nav-item dropdown col-md-2">
+       <a aria-expanded="false" class="nav-link dropdown-toggle-user clear" data-toggle="dropdown" href="" style="line-height: normal; margin: 10px 0;}">
+        <span class="no-image w-32">
+         <img class="img-circle w-32" src="data:image/jpg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkz
+ODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2Nj
+Y2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAFAAPADASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC74r/5
+CUf/AFxH8zWJW34r/wCQmn/XIfzasOmAp65ozRSc0AGc0uaTtSUALmgUlFADskU4SMB94j8TUdGa
+AJftEqniRx9GNL9ruR0uJgPaQ1DnNJmjQC0NQvB0vLj6ea1KNSvR/wAvk/8A32azZL2CM4ZsEdiK
+h/tW29WP4UtANkapff8AP5N/31Ug1i/GP9Jc/WsRNRtn6PjnuKiOrIHYFSQDgEd6NAOkXXtQH/Lb
+P1UGnDxHfjHzxn6pXMf2tHuwVYCpP7TgCBjnnt3oA6ceJr8dRCf+An/Gl/4Se+/uQf8AfJ/xrCjc
+SIGXoadQBvDxRd8Zih/I/wCNH/CUXPGYIj+f+NYNFAHRDxVMP+XZD/wI0o8VP3tF/CT/AOtXOUUA
+dKPFZ/58/wDyJ/8AWp3/AAlgzzZt/wB/P/rVzJNFAHUr4ri72rj/AIEDUi+J7U9YpBXJZzRk80Bo
+dkviaxI6Sj/gFPHiPTz1dx/wA1xdFMNDb8VHOpr7RAfqaxDWx4mO7VW9lA/r/Wsc0AHakzS0UAFJ
+S0UABOaSikdgilmIAHc0ALVa4vooOCdzDsO1V7rUkRSIWDMfTtWOSZCWZsk9felcC/JqEknI+X0G
+arm8nOcyHJxmq/TvSYyRzQA99x+ZwcmmDp0pxckckkfWkyQMUAAbg/Sjdx0pKe5U8L+dACbgevWn
+fIXJGR9fpUY46inN14oAtQXslueCGX+7WjDqcMgGchj1FYZPHSgEqcigDpkkWQfKc0+sKwvPKl/e
+twRjNbUEomj3ryPWmA+ilooAQ0dqWjtQAlFA6UtABS9KSigDU8QnOsT+23/0EVm1e1tt2rXB/wBr
+H6CqBoAKKKDQAhoooxQAVm6tcbYzGOM4/GtFjgE+lc9eyma4Lk9u3akBXIPWkFPBJBHtTcc0AHBH
+uKPTPSjHsaCCevagAGB1obO75hjilO0Nxz9aJJGkxuwSOM96AEoVSxwB1pDk471LE3lhiRyRjFAD
+QmGOfug4pmCSad1FNzxgdDQAd+Keq4ALHikjG5sUswKyFc8e1ADD1q3DqEkEIjQKAO+KgjjDdTye
+g96bImxsUAb2n3RuocuAGBwcVb7VnaNj7M3HO6tD3pgL3ooooATpSn9aM0UAFFFLQBb1U51S6P8A
+01YfrVSrWpn/AImV1/12f/0I1Vo6AHYZoPTiiigBBQaKKAEYAqR6iuZfJ4I5XiuiuZBDA7k4wK5w
+k5LHBLetABzg0hOAMDB9aM4pQC7AUANyfWlwztjvUkUDSnCg5rRh0yTzAwH05qXJIqMGzM2c7QCT
+T0X5W4w2cDiukg0SI8uHz9atDSIUHyqMn2rP2iNFRZyQV0x+6yfpTXjlYlhGcfSuuGlrnoMfSrA0
++EDBGfwpe1H7E4ZUfcAVNK8Lp95cV2b6XD1Cr+IFVZtMR+CmR+FHtRuizkxuHTvTiwK9OTWre6WY
+8tGmB6Cst4mV9rDFaRknsZSg1uNLHORxTkfOQ2Dnue1Mbrj0oVS7BQMk1RBqaPKPNki4xjcK1qwL
+DK3yqowehrfpoAooo4oASloooAOppaSloAs6l/yELn/rs/8A6EarVPfHN7OfWRj+pqCjoAUnalxm
+kNABmiiigCpqhxZt7kCsDt71vaohezbH8JDflWAf5UALn6VLDD5jhB1PpUIrW0iHe2734qJOyuVC
+PM7Glp9kIwMZz3rYgt/l6CnWyAKOKuxjArk3O5KysRLDgcCnhOO9Thc88flQU+lFhkGz1FGzPrU+
+0elAUHtRYLlVk4qJkq+YxiozGP8AJosFzOlhBGCKxbyxQOTj9a6l4x1FUbiEEUap3FJJo4i4hKyM
+WGADjFRoMSZOMDnB7+1amr22wgjp6VkMMGuuLurnDJWdi1ZyZv0KgBWOMCt/tXPaeP8ATou+Dmuh
+HSrJEpaKKAAUDpRSd6AFozQOvNFAEtwd0zn1JNR0rdaTOBQAUlLSUAFFFFAEcyeZC6YzuUiuZPU1
+1P8AkVzEyGOZ0PVSRQARrvYV0WmQiNQMViWCl7gAAHua6e2ATbXPWfQ6qEepq2w46VcA4qjDMvHT
+NXFYH0rE3ZIue+fzqQAkcCiNQfSpVQelNEtkO2gKRUpXNG2mK5CQcnNMI+n5VOcDrUTEGkNEL/Wq
+ktWZXC5ycVnvdITgHkdQalsozNWhDR5rmZOHODXYzos0LL6jArjZlaOVkbsSK3ovoc1eOty1pPN8
+Of4TW7WNosZM7ydguPz/AP1GtoDiug5wpOaWigBKWjtRQAUUUUAONJ2pTSdqACkpaSgApKWkoAKw
+NUQJevj+LDVv1j60h86N8cFdv4/5NIZPocOQ0hHsK0p5JBhYx8x7+lVtHXbZir8aruLNXHN3lqd1
+NWihtvBMBlmYsasB7qLk7uOhxTvtccQGcZ9KG1e3A2vJGpPYnNJa7DkTwXsu/nIFa1vcbk+bOa54
+XcM2TBLG59FbkVbhuiCBz9DRqhJJm7vz0oZsDrVSCXcvX9aWWTC9adwsJcSkKcVmPLMWwufwp11c
+kHHNVP7QhhP7yUK2M4AJNJXYNJE5tp5fvNge9RTWA25Cjd6inprNu5KiYBh1DAr/ADqYXSv3psIl
+GFXTKSHJHeuc1uHy74sOjjNdc4Bbd61z3iNMeWw9aqk/eIqq8SLRBiOQ/wC1itP+tUtJt3js8kE7
+zuq5XUmmcjTW4tFFFMQUUUd6ACgUtFACt1pKU55pKADtSUtJjpQAUlLSUALjmoNRt1ms3BHzqN4w
+OwqerMKh3cMPlMIU5rGq7WZvRV7ooaVxYrV0IWHFVrGPy4mjH8LkfrWrbJnGa55as6o6IypbOR5Q
+ZGbb3ANWNT01Z1hl08LG6AqykAZ+lbYhVxyKDbIOAKuMnHYmUVLcy9BsPswkkvkDsyhVUAcD3qeS
+LYd2MLnjPWtBLdRyeaiu1UDjrSnJvcIRSegy2fHGaklbIqG1XI5PvU0ycf8A16joXYqtDuBJGRnn
+nGaq65YLqKJJb4hmUFcA4Vga1IU+uKn8lQehFaRlYzlFPcw9K0uO0jla8C3MzgD5uQB+NOt9PKOx
+Dtt7AnOK2vKUdAaCvHelJtscYqOxnNHtHasTWYTcSQRD+Jtv0rop19BWVOo+1wOVyEfPFTF2Y5K6
+sE8D2lvCicKuAfpUMg+c4rQvpPNjBx1YCs9zlzXRS3ZhW0SQ2iiitjmCiiigBaBQOlAoAU9aSlpG
+6UAHakzS0lABRRRQAVbt2Hkn1xiqlSxPtJXsayqq8TajK0iQxhHGP4ua0bdcKOP1rPZdrIdxPHft
+WjbnjHtXIdly5H0qXb7VHGP84qYen9KtEsaRj1rPuny+M1oSEKD0rKlO+QkdBxSY0WLQZ/8A1VLO
+Djn+VFpGNo6VLcJ8vFHQL6kEB5Of5VcIBHb8qoJlHGehPrV5DkU4iY0j6U01IajY+maGBXnPyms9
+AGErMOAvBPrV64b5TVBE8yOTLHGc4HekhkZfEBz68VUNT3BxtTGMCq9dVNWjc46sryCiiitDIKKK
+KAFpaSgUAKaTrS0goAKSlpKACiiigAFSwkBxkfnUdOFJq5SdncsTbAqspyc9Ks27/KOlZ5GRxVi3
+f5feuScOU7IT5jZifNTBhj/69UIJBtGanMgPHGKlFD5DkGqDvLF8ixgknqaseYN2OBTgyk9P1oWo
+9iK3nniH74AD/Z6VJLPLIuYl3EVICCMMOKVCBwo4qrCKyyzOdkkQB/2eaupwOajJHOMUm8+9JgSs
+3XmmMfpTQ/PehmOKTYFa6YbeKqRzxRwnP381NeSfLzWUxyfxrSnDmMqk+VDpH8xy3rTaKK6jlbuJ
+RR3ooEKKSiloABRRRQAtJ9KU0lABSd6XrSUAFAooHWgBwpRTRinjFAxQc8U6JtrYpB1pjHbID271
+lW2NqL1saMb1MpJzzWckmOlXLdw3vXKdRDcSTQtkISueuaWO7kf7wwParzAOuMDmoFjaJ8rgj0ql
+YEH2sKMkml+1KeQ5WrCyowwyj8qP3Y+7GK00Aqte7fuhX49KdBcGXnYVA9am8ticnAHoDUgCquBx
+WbsIjBwaHfFMkfH1qtLNxUgRXcnGPWqdPkOW5phrspq0TjqSvIQ8UtJRirMw7Ud6XFJ3oAWkNLRj
+NAAKBQKUCgANJxSmkoASiiigAzR2pMHFFADhThTBTs4FAx+QvJ4HvUcMizksnI6Vm6ne/KUjbjoc
+fyq1pGfsiE9+ayrbG1D4i0cr16VZt5cGm7Ny4IzVc74X5zj1rmOo3I/mHvTjHxjNU7WcNjvV9GVh
+QBH5OT0p6xFamG0ccU4FfaquK5AcgVExOOasuVA7VSnmCrUsCCZwDg1AfmG49O1KoaRst0pzjCcC
+nsCKbkbyPSmVUa526pNG33eMfkKtjmuuK91HDP4mFLRRVEh2pOaDRQAUvrRRQAUvFJRmgAPHWikp
+KAFozSUlADs0maSnxRSSsFjUknsBQAg6VVvrgovlp95up9BWhdpFp8G66f8Aen7kan5vqfasfmZz
+I3enFXBuxQuegH41taNzZJyazLuH5WPTFaeiDFknvWeI2NqHxGrHxSyxKyEdakiXIqXyjXGdZmpv
+t345Wrkd2uOtJJFzzmoGtc+xoAum8A/ipRegdTWf9jl4weKeto4HNOwrlqS8B+6fwqEBpWy1KlsB
+1qysYA4p2FuMCYHFRSc59KtspFVZvlU0hnL3hP8AbcpHsP0FaEblSAehFZ0v7zU5H7bwM/pV5xx+
+lehBe7Y4J/Ey1RSWpiZCsjFXH3fQ+1TPBIoztyPUcik1YRFSUtFIApMUGloAOlIfumlpG+6aAEOc
+0UtPjhkkPyqT9BQBHT44pJW2xoWY+lW1sfKIN0TGPTua07a7to4StvGqt0yRk0gKSaLIih7khAeg
+9abLq9npUTfZ1WSQjAA/xqlqOtSSRGJiSxPZsba5yRtzcnJqlFsL2J5rmW+u2mncu7evb2FWokCr
+zxVa2j2gMR1q50U8VolZEjZY98THGetSaE262APBViKOigUmkL5dzPEem7K/Ssa6vE3ou0jooRzV
+pVB9KrR8VYjbiuI6xrw7hxUJQg9Kt8+9JwaQyuNwHSl2sasbV44pdq+lNCIFiPepNmBUnGOcflSE
+cdaYELjrVC/lSC3eRjjHNaL1z2vy78Qjp3x3prV2FLRGVChXBbJJIJ+tXmB444qAfez6EcVZyWHN
+eilY89kYGCK3/D1zA05guGAY/d3chvasDpTldlYMpIYHIIocbiTOyvtHhum/dKsbf3lHH4iudurS
+S2lKnLKOjAcGtCx8QusAjmXLDgvnnFa1q9vqI4CsD2xWT0KORxzSV1t34ftpEzFmNh/dxWDd6VPb
+ZbaWQfxCgLlGkP3TSnrzT4lDSovqwH60AdJY6HaFQzqzN1+Y8Vekkh0+M4AbjAA/rVHUG1ASbYhs
+XHGFyajtrGeaFvtEnzFuppXDQo6mUaGW6ZiGOMZxgcgVzbXkvOxuveui1LRbyQ4lkjwThQpzUUPh
+YGNme4Hy9cL/APXq0ktxM5jFMhj3yEkHiuok0KKJC5fOPaspbWaSFmi3IAcAhfanzpsViNEKjGO2
+aV84HFE1jcW8DyNJKWC5GeKrWktw0uyY5XbnkU1K47WLR5fH+zUlr8l4rjvwaBt696dCCZcAcjmo
+qq8WaUn7yOjWMEUgBWn2rAxCpGUGuBo7Rimlp4UU7Zk0WGM5xziipNhHrTSlAhuf85pjE+tSleM/
+0pu0d6aAqXM3lISa5q6JMu5/vMa6DUHXp6Vzd1IrPkdO1aUY3ncyqu0Rx++wx0qdahQbk3ZxmlW5
+gHy+cpP1ruvY4ybjvSdKeqF1yAfWgqfSmmibEecNmtnSNRhhBDEq3r61jmOVzhVb8BmnppjmF5pD
+wmKTsUjrE1YKzNJKm1f4eMn2oGowX/yTDafQ9K5q2mt1dP3cjc9CeK3wtv5SuttgnjhzWTGSt4ei
+mG8Oyg8jBqq2hNBcwtG+8CRcjHPWr91qD2QTbk7vTHFTWupRXPlrtO8uo5HA5FAC30kgmYCPOB1P
+FJZYeMGVvmOTgdB0rCvXvp7t4VaXBONu6t6GzeGCBMHIUA0ICvqkkSOJGn2hRxjOefoaZbPCLRSf
+M+c55PYc/wBKravazS3Z2KcYGD+FXk0nfbQ5bbtByO3NAEGoypDZlY4gzkADcc0W+lyLpyK0a72J
+LAY44NTXMQhnVFG+TrjHArQid/sqkqM4PGDQBkX2kGS1Ic7RjB71jXGkRpEWgDM46/Suuv45ZLRg
+pwSPXFY1mkQuAkrqXx0UZP5mktGBzgWJUcOHMg+7gjH41NpAD6oiupKkHp24rSvLS3mmkVHZJRnG
+V4PPtTtEtzbX7NLt4UZHUn3q+ZNAjTn08W2GiJMbdsdDTAnfp+FarIsq4XlTWe48uQxkkke9clSF
+ndHVSm3oxmz3H5Uox3pxIxTcfWszUeSMUw4Jox9aKAEx24/OmSYC5I/KlZ8MFGST7VPFEiDc55PU
+96uMbkzmomLrEJi02W4IG7gDkcZIH41yuOxGSO1ddrFxDc2z2qRyFz0z0HNU9N8PfaGEszBIiOAO
+prqppRRyTk5bmNHGyw5bkAHinaRCvDPDHgnoy5rrItDhdGUg7ApHbnJ+lJBo0aMqRno3QjtVNkF6
+G0tfswzAF3Jzt+lVL23s47M/I3+s7de9bLW5SHao7YrK1S1la2QBSTuJ/nUjH6UlnJAVCgsvPI5F
+WZtLhNtIqjGce9Z2nWk0bOxU424x61pyzRvZttk2knvx39qYGQmgASptfOD6e9a504BFVjtxn+VR
+WpnMiAsGHruzWjIrHgkj8cUgMbVdMkZkKMGAGMUun2jwEBgP9Yp7etXrxZcphj07GoYjK0iBgQPM
+X09aGA15o2umMaLndyTxzmtSKTJxjt2rnba6mkukQbQC25gFrcgnB/hHTrTsDKup3IR2VV3MBxz7
+U8SoigPMN4A4B/GsvU7mebUPs0eBuO3gfSr1vYNNcGWUbQOgP5f0qQM64uphdSbDsXgdK1IbiT7D
+G245ORnA96hutNVrh23AZPTbn0q9BaBbVEJ6HPTFPoIbd5kspO/yEn8q5+0UpfRcYBOOmO9dU8KG
+BlIyNtZix20cwOEDA/WgY1tNM1w77cEgjJ+v/wBeqd1pk8N2ksbKGA4NdAJAHA7EelV9QZhtwufz
+pWBMz45JIY3m7qMnA71Eb1Lj5Z0ww6OBV2zjdi6uMKfas2Wyngcs6HyuPnA+76mm1fcab3RZ5jC7
+sEHlWHQ07inOyG3/AHe1h0AzUKsQQGzgjg+tc04cuqOmE76Mk6CoZHwcL1p0j4WmPG4ixGMyyHqf
+4RURi5MuUlFXCGREm27lMuCc9hTRcFY5ZpPmI98dqmXS2hgfA3SMDknuaLqwk+wsu3l2/rXWlZWO
+NyvqZCXQuZR5kOd3oa6qJIoYABlQoxWHYaawmQFcYP8AdrdnUhAME5IqhCMqLbuUZfmGOuKrWiyp
+OuTlfcZqHUSyWcQxyTk1HpMztcBd5IVfXPpQBuSOFA46nFUNRuAqxjaee2RVmeXCDpnPcVk6xdNH
+PEgVOmaLAaenOHRjtPbrVDWrciN2gHGQWUCrmlT+Za7ioBzjj6VMxjklIIIP/wCr/GkI57S1dryM
+4I6/yNa90rbFyM9f5U6zMJnyoUkcZFXpVRgA2DQFzB1hW3RcdBTNJaRrxQxJAcHn8a1r4Qhl8wJ0
+74plqkJuEaMDO45x9DQNFTTbArcvIcH5Tj861Le2KA5PWqelySnzN6Y4yPlIq+HKwszfLgZ5+lMR
+l/ZY/wC1xKcl8kj06VrQn5cYFZGlXXnXM0gHXoT1q/bzs4OTx/8AWpIZBeeb5zEE47YxVi3VzagE
+nOe5rG1WZ/tUgDsPx9hVzT3ZrPk5IbP607aAabAeSQW7d6xXkt0b/WMTnsK1Fy0HTsawJI3LkAZw
+elCDob3mrtjYLkEDGai1SSRbcFCBzSpE5touMEDn8qlu7fzbZl45weaGCMiwu5PtgVnJBH9K0lGZ
+JEJJzngmqdpYLDOrbulawgAl35P0oeoHLag1xp11s+VoW5XPUetF/KzotwnEYXjnvXRahaRXEY8w
+ZC9Kykt4UiltsF0dSFU+vapYJlDTboXkLSNxsOPqau2xnkuY8KCuaW+0tbTRwkC4wwZu9VtGEi3K
+DJGBnrSjBR2KlNyOkJYKMr9agvpgkaDb1pZp3wArcnPb2qnqt2yOq4QgjvVkFmykDycAirrsvGTW
+bpU6zM5MagjutXZJE8xUORSAjvYo5QqN+GKZZWUccrOu7OMc1DevC9woaQAjsat2AxGdpDDpwaAF
+ltyzjB4xWVqtm810pUjAHrW2Wbf0yPpWZdzN9qYBQcexoAsadbNDa7T65pVVtzNjsf51YtmP2dSR
+z7U7evlsewFAHLLNLBcNLFwM8jsa31u4pI1ZiRnnpmqwiikbO0H6VdmskkjwvykdKAKmpvBtRnfA
+xxxTdLlhkucROWK5JzVfVLSdYEwN6j5TijQY2S9bOQCh4P1H+NMBNKupXEu+QnCnHHSluHuLm12x
+79rNgkHqMU+ysliLjf8Ae+XIHrV+62W9qgCkAccfSkxlHR7KSKRiy4GP8a0ra28sEHrVaxuC9wU2
+gZ/2s1did3LcdMYpiM29sEe4Z2OM9se1XLO3jjhKgZqvfrK83y5xj1xU1mpWFtzcjvnNLoMtqFC4
+AGKzpZI1dgMdewq9Gy7SNwPJrGubq3jldcO5z0P1oQjXWUeQpA4p0hJtyRwdvpmqkdyDZI6oBkjA
+9KnMjG1yAM7c0wM8NMWBGevZa028zeMZ/SuckvJi4AcjnnHFa8s7CRACcmgCfUJAlqxZwv1bFZ2j
+LHI0su/fj5e5waj1oMYFLE85OKf4e2xaXucHc7lj+OP8KQGjelDAA5G1vXjNQ2VrCspZeuPWm6jJ
+D5EW9ygPT8qXT0QysySBhgj+VAFmW2DOpBrO1GzeW4BXkAVrMXWRcDI4zWfdXDJdMuMgfh2oANKt
+JIY23A81O6P9pHB/L2qazctDkjHPrUwYbu9AM5nUFdrx89h/StTSw0dqOvJpZDDJKchTnir0MSCI
+ADAx2oArLM5lYA8Amsa4vZftz4cYBx933rf+zqGYg4OKxm0wmd2Djls9MUAbFtKWt0Jxkrmo5J4/
+s0jNlV74qSOBkhRRztUD9Kp30Ui2EmB3HT8KAIITG0i+XMpz26VskkJxzXL6erG9iBH+etbkshj2
+4YgZFMCa6k2wAkZye/FQWMiNd4AAOwn9RUGpXjQwR42nPXI9qZo90bi/IMariInI+q0gLEZWC3WW
+aQBmOcD19KZfXkRgLrGXHUZq8dPtCMGBMemKQ6ZZlNhgXb6c0BcydPvmkvNgVVXBPStG2uXZm3H6
+ce5p6aTZI+9YAG9Qzf409LC3T7qEf8CNAGFrMzm627jjFTaUT9lkPetSXTbaVtzh8+oc0+KwhhVl
+TcA3X5s0BcitsmM5HUmsK8t5Gu5Nozzx19a6VYCowrsO/ao2tGZs+c35CjUCpa27fYo1IIwRnNXB
+CTBt4+7Si3kVAomPH+yKURTbceeP++KAMUacvmruYZz2rXS1iEm7BJ9zUI06USbjcgjPTywP61Y8
+iQSbw659wfT60AQ6nFE8OXUHAOM1FbweTp8aKP4RipL6xlu4tgaNT6lTVoLKsYQKnAA+9/8AWoAx
+NYjcwQjuAM/lUekKRM+Qc49PpW3NFLKANqcf7R/wpkFq0TsxjTJ9GP8AhQBACfPAyQQRms66v5Vu
+HGVIB4yK2nhfeGVQPYGsu50yd5GcJkn3oQF6wnL2qsQuTnpUkc6OXJXGO9Q20UsMCxmJ+M9x6/Wm
+RpKiyZhfJx2/+vQOxUaW3kc5lxk9DitmAKLdArAgKMYPWua+x3SsP9HmxweFzW0rusAUQyghMD5D
+6U2ItfOsR5zgdBWassvmfdbk91p7NMtnLtjl3dgEOf5Vn2kt8Jk3rOBuGS0R/wAKAOjLER546VDN
+KBbsxB59vemvdbV565HBGO4qpd38H2Mblzk/dB560gJrWOF5Q20bh05qzPbpIB1B9qzNOu7Zp12S
+7c9mPtWmZkLArIp+hFAzM1OyeRlCngCk0a1aC9kZgRlMfrT7q6InPQqO/SrOmP5ru4x90dD9aBH/
+2Q=="/>
+        </span>
+       </a>
+       <div class="dropdown-menu pull-right dropdown-menu-scale ng-scope">
+        <div style="padding:3px 10px; line-height: 1.5; font-size: 13px;">
+         <span>
+          Welcome...
+         </span>
+         <br/>
+         <span class="label usr-a">
+          RAMEES  SALIM
+         </span>
+        </div>
+        <div class="dropdown-divider">
+        </div>
+        <div>
+         <div class="col-sm-6 border-right">
+          <a class="dropdown-item" href="/search/studentPreview.htm" ui-sref="app.page.profile">
+           Profile
+          </a>
+         </div>
+         <div class="col-sm-6">
+          <a class="dropdown-item" href="/logout.htm?confirm=true" ui-sref="">
+           SignOut
+          </a>
+         </div>
+        </div>
+       </div>
+      </li>
+     </ul>
+    </div>
+    <!--/.navbar-collapse -->
+   </div>
+  </nav>
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="container" style="padding-top:70px;">
+   <div class="row">
+    <div class="col-lg-12">
+     <div class="toolbar clearfix m-t-large m-b" id="navbar">
+      <ul class="nav navbar-nav">
+       <li class="dropdown">
+        <a class="btn btn-primary btn-circle" href="/dashboard.htm">
+         <i class="fa fa-home">
+         </i>
+         Home
+        </a>
+       </li>
+       <li class="dropdown">
+        <a aria-expanded="false" aria-haspopup="true" class="btn btn-success btn-circle" data-toggle="dropdown" href="javascript:void(0);" role="button">
+         <i class="fa fa-user">
+         </i>
+         My Account
+        </a>
+        <ul class="dropdown-menu">
+         <li>
+          <a href="/search/studentPreview.htm">
+           My Profile
+          </a>
+         </li>
+         <li>
+          <a href="/search/changePassword.htm">
+           Change Password
+          </a>
+         </li>
+         <li>
+          <a href="/search/requestPostList.htm">
+           Grievance Request
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="dropdown">
+        <a aria-expanded="false" aria-haspopup="true" class="btn btn-warning btn-circle" data-toggle="dropdown" href="javascript:void(0);" role="button">
+         <i class="fa fa-graduation-cap">
+         </i>
+         Academics
+        </a>
+        <ul class="dropdown-menu">
+         <li>
+          <a href="/search/timeTableSetup.htm">
+           Timetable
+          </a>
+         </li>
+         <li>
+          <a href="/search/teacherList.htm">
+           Teachers Listing
+          </a>
+         </li>
+         <li>
+          <a href="/search/subjAttendReport.htm">
+           Subject Attendance
+          </a>
+         </li>
+         <li>
+          <a href="/search/attendanceStatus.htm">
+           Attendance Status
+          </a>
+         </li>
+         <li>
+          <a href="/search/evaluationList.htm">
+           Evaluations
+          </a>
+         </li>
+         <li>
+          <a href="/search/industrialTrainingList.htm">
+           Industrial Training/Project Request
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="dropdown">
+        <a aria-expanded="false" aria-haspopup="true" class="btn btn-danger btn-circle" data-toggle="dropdown" href="javascript:void(0);" role="button">
+         <i class="fa fa-book">
+         </i>
+         Library
+        </a>
+        <ul class="dropdown-menu">
+         <li>
+          <a href="/newlibrary/libraryMyCheckouts.htm">
+           My Checkouts
+          </a>
+         </li>
+         <li>
+          <a href="/newlibrary/libraryTransactionHistory.htm">
+           Transaction History
+          </a>
+         </li>
+         <li>
+          <a href="/search/onlineJournals.htm">
+           Online Journals
+          </a>
+         </li>
+         <li>
+          <a href="/newlibrary/libraryRules.htm">
+           Library Rules
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="dropdown">
+        <a aria-expanded="false" aria-haspopup="true" class="btn btn-primary btn-circle" data-toggle="dropdown" href="javascript:void(0);" role="button">
+         <i class="fa fa-rupee">
+         </i>
+         Payments
+        </a>
+        <ul class="dropdown-menu">
+         <li>
+          <a href="/search/studentFeeDetails.htm">
+           Fee Details
+          </a>
+         </li>
+        </ul>
+       </li>
+      </ul>
+     </div>
+     <!-- <div class="toolbar clearfix m-t-large m-b" id="navbar"> -->
+     <!--             <ul class="nav navbar-nav"> -->
+     <!--               <li> -->
+     <!--               	<a href="#" class="btn btn-primary btn-circle active"><i class="fa fa-home"></i>Home</a> -->
+     <!--               </li> -->
+     <!--               <li> -->
+     <!--               	<a class="btn btn-success btn-circle active hastip" href="javascript:void(0);" data-original-title="" title=""><i class="fa fa-user"></i> My Accounts<b class="badge bg-info">3</b></a> -->
+     <!--               </li> -->
+     <!--               <li> -->
+     <!--               	<a href="calendar.html" class="btn btn-warning btn-circle"><i class="fa fa-graduation-cap"></i>Acadamics<b class="badge bg-info">3</b></a> -->
+     <!--               </li> -->
+     <!--               <li class="dropdown"> -->
+     <!--               	<a class="btn btn-danger btn-circle hastip" aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="fa fa-book"></i>Library<b class="badge bg-info">2</b></a> -->
+     <!-- 	                <ul class="dropdown-menu"> -->
+     <!-- 	                  <li><a href="#">Action</a></li> -->
+     <!-- 	                  <li><a href="#">Another action</a></li> -->
+     <!-- 	                  <li><a href="#">Something else here</a></li> -->
+     <!-- 	                </ul> -->
+     <!--               </li> -->
+     <!--               <li> -->
+     <!--               	<a href="calendar.html" class="btn btn-info btn-circle"><i class="fa fa-graduation-cap"></i>Acadamics<b class="badge bg-info">3</b></a> -->
+     <!--               </li> -->
+     <!--               <li class="dropdown"> -->
+     <!--               	<a class="btn btn-primary btn-circle " aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#"><i class="fa fa-book"></i>Library<b class="badge bg-info">2</b></a> -->
+     <!-- 	                <ul class="dropdown-menu"> -->
+     <!-- 	                  <li><a href="#">Action</a></li> -->
+     <!-- 	                  <li><a href="#">Another action</a></li> -->
+     <!-- 	                  <li><a href="#">Something else here</a></li> -->
+     <!-- 	                </ul> -->
+     <!--               </li>               -->
+     <!--             </ul> -->
+     <!--           </div>	 -->
+    </div>
+   </div>
+  </div>
+  <script src="./js/dashboard.js" type="text/javascript">
+  </script>
+  <div class="container">
+   <div class="row">
+    <!--First column-->
+    <div class="col-sm-4 col-xs-12">
+     <div class="box">
+      <span style="display: block; position: relative; width: 100%; text-align: center; padding: 10px;">
+       Admission Number :
+       <b>
+        SEE/6993/16
+       </b>
+      </span>
+      <div class="box-tool" style="margin-top: 30px;">
+       <ul class="nav">
+        <li class="nav-item inline dropdown">
+         <a aria-expanded="false" class="nav-link font-white" data-toggle="dropdown">
+          <i class="fa fa-fw fa-reorder">
+          </i>
+         </a>
+         <div class="dropdown-menu dropdown-menu-scale pull-right dark">
+          <a class="dropdown-item" href="search/studentPreview.htm">
+           <i class="fa fa-fw fa-user">
+           </i>
+           Full Profile
+          </a>
+          <div class="dropdown-divider">
+          </div>
+          <a class="dropdown-item" href="search/changePassword.htm">
+           <i class="fa fa-fw fa-rotate-right">
+           </i>
+           Change Password
+          </a>
+         </div>
+        </li>
+       </ul>
+      </div>
+      <div class="p-a-md text-center">
+       <p>
+        <img class="img-circle w-xs" src="data:image/jpg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkz
+ODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2Nj
+Y2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAFAAPADASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC74r/5
+CUf/AFxH8zWJW34r/wCQmn/XIfzasOmAp65ozRSc0AGc0uaTtSUALmgUlFADskU4SMB94j8TUdGa
+AJftEqniRx9GNL9ruR0uJgPaQ1DnNJmjQC0NQvB0vLj6ea1KNSvR/wAvk/8A32azZL2CM4ZsEdiK
+h/tW29WP4UtANkapff8AP5N/31Ug1i/GP9Jc/WsRNRtn6PjnuKiOrIHYFSQDgEd6NAOkXXtQH/Lb
+P1UGnDxHfjHzxn6pXMf2tHuwVYCpP7TgCBjnnt3oA6ceJr8dRCf+An/Gl/4Se+/uQf8AfJ/xrCjc
+SIGXoadQBvDxRd8Zih/I/wCNH/CUXPGYIj+f+NYNFAHRDxVMP+XZD/wI0o8VP3tF/CT/AOtXOUUA
+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
+2Q=="/>
+       </p>
+       <a class="text-md block" href="search/studentPreview.htm" style="color: #fff;">
+        RAMEES  SALIM
+       </a>
+       <p>
+        <large style="color:#fff;">
+         EE (KTU 2015) S7   - A
+        </large>
+       </p>
+      </div>
+      <div class="row no-gutter b-b">
+       <div class="col-xs-6 b-r">
+        <p class="p-a block text-center">
+         <span class="block _500">
+          7061
+         </span>
+         <span class="clear text-muted">
+          Student Code
+         </span>
+        </p>
+       </div>
+       <div class="col-xs-6">
+        <p class="p-a block text-center">
+         <span class="block _500">
+          44
+         </span>
+         <span class="clear text-muted">
+          Roll No
+         </span>
+        </p>
+       </div>
+      </div>
+      <div class="p-a b-b">
+       <span class="w-36 rounded sub-4 bold">
+        <i class="fa fa-envelope">
+        </i>
+       </span>
+       -NA-
+      </div>
+      <div class="p-a">
+       <span class="w-36 rounded sub-1 bold">
+        <i class="fa fa-phone-square">
+        </i>
+       </span>
+       -NA-
+      </div>
+     </div>
+     <div class="portlet light bordered box">
+      <div class="box-tool">
+       <ul class="nav">
+        <li class="nav-item inline dropdown">
+         <a aria-expanded="false" class="nav-link" data-toggle="dropdown" href="">
+          <i class="fa fa-angle-down">
+          </i>
+         </a>
+         <div class="dropdown-menu dropdown-menu-scale pull-right dark">
+          <a aria-expanded="false" class="nav-link" data-toggle="dropdown" href="">
+          </a>
+          <a class="dropdown-item" href="search/timeTableSetup.htm">
+           View more ...
+          </a>
+         </div>
+        </li>
+       </ul>
+      </div>
+      <div class="portlet-title">
+       <div class="caption font-cyan">
+        <i class="fa fa-fw fa-clock-o">
+        </i>
+        <span class="caption-subject bold">
+         Today's Time Table
+        </span>
+       </div>
+      </div>
+      <ul class="list-group m-b" style="margin-top: 6px;">
+       <li class="list-group-item">
+        <div class="mt-element-ribbon">
+         <div class="ribbon ribbon-right ribbon-clip ribbon-border-dash-hor tb-bg-1">
+          <div class="ribbon-sub ribbon-clip ribbon-right">
+          </div>
+          1
+         </div>
+         <span class="block _500">
+          09:00FN to 09:45FN
+         </span>
+        </div>
+        <span class="clear text-muted">
+         Electrical system design by
+         <span class="block">
+          <label class="label tb-bg-1 label-tchs">
+           BEENA PUTHILLATH , BEENA PUTHILLATH , DEEPA S , DEEPA S
+          </label>
+         </span>
+        </span>
+       </li>
+       <li class="list-group-item">
+        <div class="mt-element-ribbon">
+         <div class="ribbon ribbon-right ribbon-clip ribbon-border-dash-hor tb-bg-2">
+          <div class="ribbon-sub ribbon-clip ribbon-right">
+          </div>
+          2
+         </div>
+         <span class="block _500">
+          09:45FN to 10:35FN
+         </span>
+        </div>
+        <span class="clear text-muted">
+         Electrical system design by
+         <span class="block">
+          <label class="label tb-bg-2 label-tchs">
+           BEENA PUTHILLATH , BEENA PUTHILLATH , DEEPA S , DEEPA S
+          </label>
+         </span>
+        </span>
+       </li>
+       <li class="list-group-item">
+        <div class="mt-element-ribbon">
+         <div class="ribbon ribbon-right ribbon-clip ribbon-border-dash-hor tb-bg-3">
+          <div class="ribbon-sub ribbon-clip ribbon-right">
+          </div>
+          3
+         </div>
+         <span class="block _500">
+          10:45FN to 11:35FN
+         </span>
+        </div>
+        <span class="clear text-muted">
+         Electric and Hybrid Vehicles by
+         <span class="block">
+          <label class="label tb-bg-3 label-tchs">
+           Reenu Bose
+          </label>
+         </span>
+        </span>
+       </li>
+       <li class="list-group-item">
+        <div class="mt-element-ribbon">
+         <div class="ribbon ribbon-right ribbon-clip ribbon-border-dash-hor tb-bg-4">
+          <div class="ribbon-sub ribbon-clip ribbon-right">
+          </div>
+          4
+         </div>
+         <span class="block _500">
+          11:35FN to 12:25FN
+         </span>
+        </div>
+        <span class="clear text-muted">
+         Distributed generation and smart grids by
+         <span class="block">
+          <label class="label tb-bg-4 label-tchs">
+           DIVYA NATH K.
+          </label>
+         </span>
+        </span>
+       </li>
+       <li class="list-group-item">
+        <div class="mt-element-ribbon">
+         <div class="ribbon ribbon-right ribbon-clip ribbon-border-dash-hor tb-bg-5">
+          <div class="ribbon-sub ribbon-clip ribbon-right">
+          </div>
+          5
+         </div>
+         <span class="block _500">
+          13:10AN to 14:05AN
+         </span>
+        </div>
+        <span class="clear text-muted">
+         Electronic communication by
+         <span class="block">
+          <label class="label tb-bg-5 label-tchs">
+           JERRY KURIAKOSE
+          </label>
+         </span>
+        </span>
+       </li>
+       <li class="list-group-item">
+        <div class="mt-element-ribbon">
+         <div class="ribbon ribbon-right ribbon-clip ribbon-border-dash-hor tb-bg-6">
+          <div class="ribbon-sub ribbon-clip ribbon-right">
+          </div>
+          6
+         </div>
+         <span class="block _500">
+          14:15AN to 15:05AN
+         </span>
+        </div>
+        <span class="clear text-muted">
+         Seminar &amp; Project Preliminary by
+         <span class="block">
+          <label class="label tb-bg-6 label-tchs">
+           LAKSHMI C.R , Reenu Bose
+          </label>
+         </span>
+        </span>
+       </li>
+       <li class="list-group-item">
+        <div class="mt-element-ribbon">
+         <div class="ribbon ribbon-right ribbon-clip ribbon-border-dash-hor tb-bg-7">
+          <div class="ribbon-sub ribbon-clip ribbon-right">
+          </div>
+          7
+         </div>
+         <span class="block _500">
+          15:05AN to 16:00AN
+         </span>
+        </div>
+        <span class="clear text-muted">
+         Seminar &amp; Project Preliminary by
+         <span class="block">
+          <label class="label tb-bg-7 label-tchs">
+           LAKSHMI C.R , Reenu Bose
+          </label>
+         </span>
+        </span>
+       </li>
+      </ul>
+     </div>
+     <div class="portlet light bordered box">
+      <div class="box-tool">
+       <ul class="nav">
+        <li class="nav-item inline dropdown">
+         <a aria-expanded="false" class="nav-link" data-toggle="dropdown">
+          <i class="fa fa-angle-down">
+          </i>
+         </a>
+         <div class="dropdown-menu dropdown-menu-scale pull-right dark">
+          <a aria-expanded="false" class="nav-link" data-toggle="dropdown">
+          </a>
+          <a class="dropdown-item" href="search/evaluationList.htm">
+           View more ...
+          </a>
+         </div>
+        </li>
+       </ul>
+      </div>
+      <div class="portlet-title">
+       <div class="caption font-cyan">
+        <i class="fa fa-fw fa-tasks">
+        </i>
+        <span class="caption-subject bold">
+         Exam schedules
+        </span>
+       </div>
+      </div>
+      <div class="alert empty" role="alert">
+       <span class="empty-alert pull-left">
+        <i class="fa fa-fw fa-ban">
+        </i>
+       </span>
+       <h4 class="block" style="color: #555;">
+        No upcoming exams
+       </h4>
+       <p>
+        No exam(s) scheduled yet.
+       </p>
+      </div>
+     </div>
+     <div class="portlet light bordered box">
+      <div class="box-tool">
+       <ul class="nav">
+        <li class="nav-item inline dropdown">
+         <a aria-expanded="false" class="nav-link" data-toggle="dropdown" style="">
+          <i class="fa fa-angle-down">
+          </i>
+         </a>
+         <div class="dropdown-menu dropdown-menu-scale pull-right dark">
+          <a class="dropdown-item" href="newlibrary/libraryMyCheckouts.htm">
+           View more ...
+          </a>
+         </div>
+        </li>
+       </ul>
+      </div>
+      <div class="portlet-title font-cyan">
+       <i class="fa fa-fw fa-calendar">
+       </i>
+       <div class="caption col-sm-10 col-xs-10">
+        <span class="caption-subject bold">
+         Library Item Due
+        </span>
+       </div>
+      </div>
+      <div class="note empty">
+       <span class="empty-alert pull-left">
+        <i class="fa fa-fw fa-ban">
+        </i>
+       </span>
+       <div class="pull-left col-sm-10 col-xs-10">
+        <h4 class="block">
+         No attendance entered
+        </h4>
+        <p>
+         No attendance entered
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!--End first column-->
+    <!--Second column-->
+    <div class="col-sm-4 col-xs-12">
+     <div class="portlet light bordered box">
+      <div class="portlet-title font-cyan">
+       <div class="caption">
+        <i class="fa fa-fw fa-info-circle">
+        </i>
+        <span class="caption-subject bold">
+         Alert
+        </span>
+       </div>
+      </div>
+      <div style="height:500px;overflow:auto;">
+       <div class="note empty" role="alert">
+        <span class="empty-alert pull-left">
+         <i class="fa fa-fw fa-ban">
+         </i>
+        </span>
+        <div class="pull-left col-sm-10 col-xs-10">
+         <h4>
+          No Alerts
+         </h4>
+         <p>
+          No alerts to be displayed right now
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="portlet light bordered box">
+      <div class="box-tool">
+       <ul class="nav">
+        <li class="nav-item inline dropdown">
+         <a aria-expanded="false" class="nav-link" data-toggle="dropdown" style="">
+          <i class="fa fa-angle-down">
+          </i>
+         </a>
+         <div class="dropdown-menu dropdown-menu-scale pull-right dark">
+          <a class="dropdown-item" href="search/subjAttendReport.htm">
+           View more ...
+          </a>
+         </div>
+        </li>
+       </ul>
+      </div>
+      <div class="portlet-title font-cyan">
+       <i class="fa fa-fw fa-calendar">
+       </i>
+       <div class="caption col-sm-10 col-xs-10">
+        <span class="caption-subject bold">
+         Subject wise attendance for November
+        </span>
+       </div>
+      </div>
+      <table class="table table-striped">
+       <tbody>
+       </tbody>
+       <thead>
+        <tr>
+         <th class="text-center" style="">
+          Subject
+         </th>
+         <th>
+          Total Hour(s) Present
+         </th>
+         <th style="">
+          Total Working Hour(s)
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          Electronic communication
+         </td>
+         <td>
+          <span class="w-36 rounded sub-1 pull-left bold">
+           5.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           7
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Distributed generation and smart grids
+         </td>
+         <td>
+          <span class="w-36 rounded sub-2 pull-left bold">
+           3.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           5
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Electrical system design
+         </td>
+         <td>
+          <span class="w-36 rounded sub-3 pull-left bold">
+           4.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           5
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Digital Signal Processing
+         </td>
+         <td>
+          <span class="w-36 rounded sub-4 pull-left bold">
+           5.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           5
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Electrical Machine Design
+         </td>
+         <td>
+          <span class="w-36 rounded sub-5 pull-left bold">
+           5.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           7
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Electric and Hybrid Vehicles
+         </td>
+         <td>
+          <span class="w-36 rounded sub-6 pull-left bold">
+           3.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           5
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Seminar &amp; Project Preliminary
+         </td>
+         <td>
+          <span class="w-36 rounded sub-7 pull-left bold">
+           3.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           6
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Extra Curricular Activities
+         </td>
+         <td>
+          <span class="w-36 rounded sub-8 pull-left bold">
+           7.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           7
+          </span>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <div class="portlet light bordered box">
+      <div class="box-tool">
+       <ul class="nav">
+        <li class="nav-item inline dropdown">
+         <a aria-expanded="false" class="nav-link" data-toggle="dropdown">
+          <i class="fa fa-angle-down">
+          </i>
+         </a>
+         <div class="dropdown-menu dropdown-menu-scale pull-right dark">
+          <a aria-expanded="false" class="nav-link" data-toggle="dropdown">
+          </a>
+          <a class="dropdown-item" href="search/evaluationList.htm">
+           View more ...
+          </a>
+         </div>
+        </li>
+       </ul>
+      </div>
+      <div class="portlet-title">
+       <div class="caption font-cyan">
+        <i class="fa fa-fw fa-tasks">
+        </i>
+        <span class="caption-subject bold">
+         Exam Results
+        </span>
+       </div>
+      </div>
+      <table class="table table-striped">
+       <thead>
+        <tr>
+         <th class="text-center" style="">
+          Exam Name
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td class="text-info">
+          B-Tech Series Exam-
+          <a href="search/evaluationList.htm?val=1210">
+           2018-2019 -b 16- B.Tech - Electrical &amp; Electronics Engineering. (KTU 2015)  - S5 - B-Tech Series Exam
+          </a>
+         </td>
+        </tr>
+        <tr>
+         <td class="text-info">
+          B-Tech Internal Exam-
+          <a href="search/evaluationList.htm?val=1127">
+           2017-2018 -b 16- B.Tech - Electrical &amp; Electronics Engineering. (KTU 2015)  - S4 - B-Tech Internal Exam
+          </a>
+         </td>
+        </tr>
+        <tr>
+         <td class="text-info">
+          B-Tech Series Exam-
+          <a href="search/evaluationList.htm?val=1127">
+           2017-2018 -b 16- B.Tech - Electrical &amp; Electronics Engineering. (KTU 2015)  - S4 - B-Tech Series Exam - B-Tech Main - B-Tech Series Exam
+          </a>
+         </td>
+        </tr>
+        <tr>
+         <td class="text-info">
+          B-Tech Series Exam-
+          <a href="search/evaluationList.htm?val=708">
+           2017-2018 -b 16- B.Tech - Electrical &amp; Electronics Engineering. (KTU 2015)  - S3 - B-Tech Series Exam - B-Tech Series Exam
+          </a>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <!--End second column-->
+    <!--Third column-->
+    <div class="col-sm-4 col-xs-12">
+     <div class="portlet light bordered box">
+      <div class="portlet-title font-cyan">
+       <div class="caption">
+        <i class="fa fa-fw fa-info-circle">
+        </i>
+        <span class="caption-subject bold">
+         Event(s)
+        </span>
+       </div>
+      </div>
+      <div style="height:300px;;overflow:auto;">
+       <div class="note empty" role="alert">
+        <span class="empty-alert pull-left">
+         <i class="fa fa-fw fa-ban">
+         </i>
+        </span>
+        <div class="pull-left col-sm-10 col-xs-10">
+         <h4>
+          No Event(s)
+         </h4>
+         <p>
+          No events to be displayed right now
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="portlet light bordered box">
+      <div class="box-tool">
+       <ul class="nav">
+        <li class="nav-item inline dropdown">
+         <a aria-expanded="false" class="nav-link" data-toggle="dropdown" style="">
+          <i class="fa fa-angle-down">
+          </i>
+         </a>
+         <div class="dropdown-menu dropdown-menu-scale pull-right dark">
+          <a class="dropdown-item" href="search/subjAttendReport.htm">
+           View more ...
+          </a>
+         </div>
+        </li>
+       </ul>
+      </div>
+      <div class="portlet-title font-cyan">
+       <i class="fa fa-fw fa-calendar">
+       </i>
+       <div class="caption col-sm-10 col-xs-10">
+        <span class="caption-subject bold">
+         Yesterday's Attendance
+        </span>
+       </div>
+      </div>
+      <c:set value="" var="className">
+      </c:set>
+      <c:set value="" var="className">
+      </c:set>
+      <c:set value="" var="className">
+      </c:set>
+      <c:set value="" var="className">
+      </c:set>
+      <c:set value="" var="className">
+      </c:set>
+      <table class="table table-striped">
+       <tbody>
+       </tbody>
+       <thead>
+        <tr>
+         <th class="text-center" style="">
+          Subject
+         </th>
+         <th>
+          Total Hour(s) Present
+         </th>
+         <th style="">
+          Total Working Hour(s)
+         </th>
+        </tr>
+       </thead>
+       <tbody>
+        <tr>
+         <td>
+          Electronic communication
+         </td>
+         <td>
+          <span class="w-36 rounded sub-2 pull-left bold">
+           2.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           2
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Electrical system design
+         </td>
+         <td>
+          <span class="w-36 rounded sub-3 pull-left bold">
+           1.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           1
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Digital Signal Processing
+         </td>
+         <td>
+          <span class="w-36 rounded sub-4 pull-left bold">
+           2.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           2
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Electrical Machine Design
+         </td>
+         <td>
+          <span class="w-36 rounded sub-5 pull-left bold">
+           1.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           1
+          </span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          Electric and Hybrid Vehicles
+         </td>
+         <td>
+          <span class="w-36 rounded sub-6 pull-left bold">
+           1.0
+          </span>
+         </td>
+         <td class="bold">
+          <span class="w-36 rounded sub-hr pull-left bold">
+           1
+          </span>
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <div class="portlet light bordered box">
+      <div class="box-tool">
+       <ul class="nav">
+        <li class="nav-item inline dropdown">
+         <a aria-expanded="false" class="nav-link" data-toggle="dropdown" style="">
+          <i class="fa fa-angle-down">
+          </i>
+         </a>
+         <div class="dropdown-menu dropdown-menu-scale pull-right dark">
+          <a class="dropdown-item" href="search/teacherList.htm">
+           View more ...
+          </a>
+         </div>
+        </li>
+       </ul>
+      </div>
+      <div class="portlet-title">
+       <div class="caption font-cyan">
+        <i class="fa fa-fw fa-comments-o">
+        </i>
+        <span class="caption-subject bold">
+         Student Feedback
+        </span>
+       </div>
+      </div>
+      '
+      <div class="alert empty" role="alert">
+       <span class="empty-alert pull-left">
+        <i class="fa fa-fw fa-ban">
+        </i>
+       </span>
+       <div class="pull-left col-sm-10 col-xs-10">
+        <h4 style="color: #555;">
+         No feedbacks
+        </h4>
+        <p>
+         No reviews are given yet.
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!--End third column-->
+   </div>
+  </div>
+  <!-- Example row of columns -->
+  <footer class="text-center">
+   <p style="margin:0;">
+    © powered by
+    <a href="http://www.ospyn.com" target="_blank">
+     Ospyn Technologies
+    </a>
+    | Application best viewed in IE9+, Firefox, Chrome, Safari .
+   </p>
+  </footer>
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="/js/bootstrap/bootstrap.min.js">
+  </script>
+  <script src="/js/bootstrap/jquery.slimscroll.min.js">
+  </script>
+  <script src="/js/bootstrap/bootstrap-datepicker.js">
+  </script>
+  <script type="text/javascript">
+   $(document).ready(function () {
+							
+	$(".slimScrollDiv").slimScroll({
+		
+		height: '180px',
+		size: '7px',
+		position: 'right',
+		color: '#1fb5ac',
+		alwaysVisible: false,
+		distance: '5px',
+		railVisible: true,
+		railColor: '#222',
+		railOpacity: 0.3,
+		wheelStep: 10,
+		allowPageScroll: true,
+		disableFadeOut: true
+	});
+	var options = {
+			html: true,
+			animation:"fade",
+			        delay: "200",
+			        trigger:"focus",
+			        placement: "bottom"
+			};
+
+			$('.hastip').popover(options);
+
+});
+  </script>
+ </body>
+</html>

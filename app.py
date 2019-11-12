@@ -21,16 +21,17 @@ def index():
 def attendance():
     if (request.method == 'GET'):
         return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
-    username=None
-    password=None
-    if request.is_json:
-        data = request.get_json(force=True)
-        if 'username' in data:
-            username = data['username']
-        if 'password' in data:
-            password = data['password']
-    data = Attendance(username,password)
-    print(data)
-    return json.dumps(data)
+    if ( request.method == 'POST'):
+        username=None
+        password=None
+        if request.is_json:
+            data = request.get_json(force=True)
+            if 'username' in data:
+                username = data['username']
+            if 'password' in data:
+                password = data['password']
+        data = Attendance(username,password)
+        # print(data)
+        return json.dumps(data)
 if __name__ == '__main__':
    app.run(debug = True)

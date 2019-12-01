@@ -45,6 +45,8 @@ def attendance():
                 a = isinstance(snip, float)
                 if(a ==True):
                     snip=(int(snip)+1)
+                if(float(i[4])/(float((i[1]))+snip)< .75):
+                    snip=(int(snip)-1)
                 # print('You can snip ',i[0],'for',snip)
                 v_data['snip'] = snip
             elif(i[5]==76 or i[5] == 75):

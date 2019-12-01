@@ -77,9 +77,9 @@ def Attendance(username,password):
 			data.append([ele for ele in cols if ele])
 			data[i] = cols
 			i= i+1
-		return data
-	except Exception as e:
-		return "Incorrect Username or password"
-		print(e)
+		
+	except requests.exceptions.HTTPError as e:
+		return "Error: " + str(e)
+	return data	
 
 # print(Attendance("SEE/6993/16","69936993"))

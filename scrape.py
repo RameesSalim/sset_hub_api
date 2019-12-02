@@ -6,6 +6,7 @@ import numpy as np
 import json
 import http.cookiejar
 import datetime
+import os
 
 
 
@@ -23,29 +24,44 @@ def Attendance(username,password):
 	session = ";" + session[1]
 	# username = "SEE/7448/16"
 	# password = "7448"
-	username = "SSET_" + username 
+	usernamee = "SSET_" + username
 	# Ecoliade Login Action 
 	br = mechanize.Browser()
 	br.set_handle_robots(False)
 	br.set_handle_refresh(False)
 	br.addheaders = [("User-agent","Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.13) Gecko/20101206 Ubuntu/10.10 (maverick) Firefox/3.6.13")]
-	cj = mechanize.CookieJar()
-	br.set_cookiejar(cj)
+	#COokie Setting
+
+	cookiejar =mechanize.LWPCookieJar()
+	br.set_cookiejar(cookiejar)
+	# cj = mechanize.CookieJar()
+	# br.set_cookiejar(cj)
 	try:
 		sign_in = br.open(new_url.url)  #the login url
 		br.select_form(nr = 0) 
 		br.set_all_readonly(False)
-		br["username"] =username 
+		br["username"] =usernamee
 		br["password"] =password  
 		logged_in = br.submit()  
 		logincheck = logged_in.read() 
-
-		
+		soup = BeautifulSoup(logincheck, 'html5lib') 
+		# os.remove('login.html')
+		# f=open('login.html','w+')
+		# f.write(soup.prettify())
+		# f.close()
 	except Exception as e:
 		print(e)
+	val = soup.find(text=username)
+	print(username)
+	print(val)
 	#Scrapping Needed Data
 	new_url = br.geturl()
-	new_url = br.open("https://sset.ecoleaide.com/search/subjAttendReport.htm")
+	new_url = br.open("https://sset.ecoleaide.com/search/subjAttendReport.htm" + session)
+	soup = BeautifulSoup(new_url,'html5lib')
+	# os.remove('attendance.html')
+	# f = open('attendance.html','w+')
+	# f.write(soup.prettify())
+	# f.close()
 	br.select_form(nr = 0) 
 	br.set_all_readonly(False)
 
@@ -57,8 +73,6 @@ def Attendance(username,password):
 	else:
 		a="1/1/"
 		date = a+str(x.year)
-
-	#Adding Starting Date 
 	try:
 		br["fromDate"] =date
 		read = br.submit()  
@@ -67,7 +81,6 @@ def Attendance(username,password):
 		data=[]
 		table = soup.find('table', attrs = {'class':'subj-attendance-table'})
 		table_body = table.find('tbody')
-
 		rows = table_body.find_all('tr')
 		datas = np.array([], dtype=float, ndmin=2)
 		i = 0
@@ -77,9 +90,8 @@ def Attendance(username,password):
 			data.append([ele for ele in cols if ele])
 			data[i] = cols
 			i= i+1
-		
+
 	except requests.exceptions.HTTPError as e:
 		return "Error: " + str(e)
 	return data	
 
-# print(Attendance("SEE/6993/16","69936993"))

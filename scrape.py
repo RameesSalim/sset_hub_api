@@ -90,8 +90,8 @@ def Attendance(username,password):
 			data.append([ele for ele in cols if ele])
 			data[i] = cols
 			i= i+1
-		return data
-	except Exception as e:
-		return "Failed"
-		print(e)
+
+	except requests.exceptions.HTTPError as e:
+		return "Error: " + str(e)
+	return data	
 
